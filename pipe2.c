@@ -15,7 +15,7 @@ int run_command(char** arg_list, int rd, int wd) {
   }else {
     if (rd != STDIN_FILENO){
       if(dup2(rd, STDIN_FILENO) != STDIN_FILENO){
-	fprintf(stderr, "Error: failed to redirect standard input\n");
+        fprintf(stderr, "Error: failed to redirect standard input\n");
         return -1;
       }
     }
@@ -30,8 +30,8 @@ int run_command(char** arg_list, int rd, int wd) {
     /* Now execute PROGRAM, searching for it in the path.  */ 
     execvp (arg_list[0], arg_list); 
     /* The execvp  function returns only if an error occurs.  */ 
-    fprintf (stderr,  "an error occurred in execvp\n"); 
-    abort (); 
+    fprintf(stderr,  "an error occurred in execvp\n"); 
+    abort(); 
   } 
 } 
 
@@ -51,7 +51,7 @@ int main () {
   int wd = STDOUT_FILENO;
   int fds[2];
   if (pipe(fds) != 0) {
-    fprintf(stderr, "Error: unable to pipe command '%s'\n", arg_list1[0]);
+    fprintf(stderr, "Error: unable to pipe command '%s'\n", arg_list[0]);
     return -1;
   }
   
@@ -59,7 +59,7 @@ int main () {
 
   // delete the pipe symbol and insert a null to terminate the
   // first command's argument list
-  args[pipe_index] = NULL;
+  arg_list[pipe_index] = NULL;
 
   // run first command: read from STDIN and write to the pipe
   run_command(arg_list, rd, wd);

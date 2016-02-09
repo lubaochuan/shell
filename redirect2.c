@@ -16,7 +16,7 @@ int main () {
   }; 
 
   /* Spawn a child process running the "ls" command. */
-  pid_t child_pid = fork (); 
+  pid_t child_pid = fork(); 
 
   if (child_pid == 0){
     /* This is the child process. */ 
@@ -34,7 +34,7 @@ int main () {
       execvp (arg_list[0],  arg_list); 
       /* The execvp  function returns only if an error occurs.  */ 
       fprintf (stderr,  "an error occurred in execvp\n"); 
-      abort (); 
+      abort(); 
     }
   }
   /* only the parent process executes the following code. */

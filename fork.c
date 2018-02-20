@@ -7,7 +7,7 @@
 
 int main(){
   pid_t child_pid;
-  
+
   printf("the main program process ID is %d\n", (int) getpid());
 
   child_pid = fork();
